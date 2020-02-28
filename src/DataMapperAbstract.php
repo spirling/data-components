@@ -2,6 +2,7 @@
 
 namespace Spirling\DataComponents;
 
+use DateTime;
 use Spirling\DataComponents\Interfaces\DataMapperInterface;
 
 /**
@@ -11,6 +12,11 @@ use Spirling\DataComponents\Interfaces\DataMapperInterface;
  */
 abstract class DataMapperAbstract implements DataMapperInterface
 {
+
+    const PARAM_STRING = 'string';
+    const PARAM_INT = 'int';
+    const PARAM_DATE = 'date';
+    const PARAM_FLOAT = 'float';
 
     /**
      * Array of table data fields in format
@@ -28,17 +34,16 @@ abstract class DataMapperAbstract implements DataMapperInterface
      */
     abstract protected function getTableDataTypes() : array;
 
-    abstract protected function prepare($name, $value);
+    /**
+     * Prepare value for saving
+     *
+     * @param string $name
+     * @param mixed $value
+     *
+     * @return mixed
+     */
+    abstract protected function prepare(string $name, $value);
 
-    abstract protected function insert(array $data);
-
-    abstract protected function update(array $data);
-
-    abstract protected function delete(array $data);
-
-    protected function prepareData(array $data)
-    {
-
-    }
+    abstract protected function prepareData(array $data) : array;
 
 }
