@@ -1,0 +1,24 @@
+{
+  "name": "spirling/data-components",
+  "description": "Data components",
+  "version": "0.0.1",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Johnie Spirling",
+      "email": "johnie.spirling@gmail.com",
+      "role": "master"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Spirling\\DataComponents\\": "src"
+    }
+  },
+  "require": {
+    "php": "^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7"
+  }
+}
