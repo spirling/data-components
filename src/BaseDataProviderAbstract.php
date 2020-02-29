@@ -54,6 +54,10 @@ abstract class BaseDataProviderAbstract extends DataProviderAbstract
     {
         if ($this->init) {
 
+            if (array_key_exists('id', $data)) {
+                $this->setId((int) $data['id']);
+            }
+
             foreach ($this->getDataFields() as $field => $label) {
                 if (array_key_exists($field, $data)) {
                     $value = $this->prepare($field, $data[$field]);
