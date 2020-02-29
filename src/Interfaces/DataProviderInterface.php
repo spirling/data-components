@@ -11,7 +11,7 @@ use Spirling\DataComponents\Exceptions\PropertyNotFoundException;
  *
  * @package Spirling\DataComponents\Interfaces
  */
-interface DataInterface
+interface DataProviderInterface
 {
 
     /**

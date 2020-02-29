@@ -15,8 +15,8 @@ interface FactoryInterface
      *
      * @param array $data
      *
-     * @return DataInterface
+     * @return DataProviderInterface
      */
-    public function create(array $data) : DataInterface;
+    public function create(array $data) : DataProviderInterface;
 
 }

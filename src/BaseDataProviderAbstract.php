@@ -10,7 +10,7 @@ use Spirling\DataComponents\Traits\EditableTrait;
  *
  * @package Spirling\DataComponents
  */
-abstract class BaseDataAbstract extends DataAbstract
+abstract class BaseDataProviderAbstract extends DataProviderAbstract
 {
 
     use EditableTrait;
@@ -26,6 +26,14 @@ abstract class BaseDataAbstract extends DataAbstract
     public function getId() : int
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->isEditable() and $this->id = $id;
     }
 
     /**
@@ -56,16 +64,6 @@ abstract class BaseDataAbstract extends DataAbstract
 
             $init = false;
         }
-    }
-
-    /**
-     * @inheritDoc
-     * @rewrite
-     */
-    public function getDataFields() : array
-    {
-        // TODO: Implement getDataFields() method.
-        return [];
     }
 
 }

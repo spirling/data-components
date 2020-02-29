@@ -3,9 +3,9 @@
 namespace Spirling\DataComponents;
 
 use Spirling\DataComponents\Exceptions\PropertyNotFoundException;
-use Spirling\DataComponents\Interfaces\DataInterface;
+use Spirling\DataComponents\Interfaces\DataProviderInterface;
 
-abstract class DataAbstract implements DataInterface
+abstract class DataProviderAbstract implements DataProviderInterface
 {
 
     /**
@@ -62,7 +62,7 @@ abstract class DataAbstract implements DataInterface
     {
         $prepareMethod = 'prepare' . ucfirst($name);
         if (method_exists($this, $prepareMethod)) {
-            $value = $this->$prepareMethod($name, $value);
+            $value = $this->$prepareMethod($value);
         }
         return $value;
     }
@@ -74,7 +74,7 @@ abstract class DataAbstract implements DataInterface
     {
         $validator = 'validate' . ucfirst($name);
         if (method_exists($this, $validator)) {
-            $this->$validator($name, $value);
+            $this->$validator($value);
         }
     }
 

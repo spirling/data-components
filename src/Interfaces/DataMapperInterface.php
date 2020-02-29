@@ -15,20 +15,20 @@ interface DataMapperInterface
     /**
      * Save data object into data storage
      *
-     * @param DataInterface $dataObject
+     * @param DataProviderInterface $dataProvider
      *
      * @throws MappingException
      */
-    public function save(DataInterface $dataObject) : void;
+    public function save(DataProviderInterface $dataProvider) : void;
 
     /**
      * Remove data from data storage
      *
-     * @param DataInterface $dataObject
+     * @param DataProviderInterface $dataProvider
      *
      * @throws MappingException
      */
-    public function remove(DataInterface $dataObject) : void;
+    public function remove(DataProviderInterface $dataProvider) : void;
 
     /**
      * Get row of data filtered by conditions (it will return only 1 row)
