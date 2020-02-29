@@ -16,7 +16,7 @@ abstract class DataProviderAbstract implements DataProviderInterface
         $result = null;
         $getter = 'get' . ucfirst($name);
         if (method_exists($this, $getter)) {
-            $result = $this->$getter($name);
+            $result = $this->$getter();
         }
         return $result;
     }
@@ -28,7 +28,7 @@ abstract class DataProviderAbstract implements DataProviderInterface
     {
         $setter = 'set' . ucfirst($name);
         if (method_exists($this, $setter)) {
-            $this->$setter($name, $value);
+            $this->$setter($value);
         } else {
             throw new PropertyNotFoundException(sprintf('Property "%s" not found', $name));
         }
