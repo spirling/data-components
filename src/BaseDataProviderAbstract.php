@@ -16,6 +16,11 @@ abstract class BaseDataProviderAbstract extends DataProviderAbstract
     use EditableTrait;
 
     /**
+     * @var bool
+     */
+    private $init = true;
+
+    /**
      * @var int
      */
     protected $id;
@@ -47,19 +52,18 @@ abstract class BaseDataProviderAbstract extends DataProviderAbstract
      */
     public function init(array $data)
     {
-        static $init = true;
-        if ($init) {
+        if ($this->init) {
 
             foreach ($this->getDataFields() as $field => $label) {
                 if (array_key_exists($field, $data)) {
                     $value = $this->prepare($field, $data[$field]);
                     $this->set($field, $value);
                 } else {
-                    throw new PropertyNotFoundException(sprintf('Property "%s" not found', $name));
+                    throw new PropertyNotFoundException(sprintf('Property "%s" not found', $field));
                 }
             }
 
-            $init = false;
+            $this->init = false;
         }
     }
 
