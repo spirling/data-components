@@ -36,10 +36,10 @@ interface DataMapperInterface
      * @param array $conditions conditions for filtering rows
      * @param array $orderings ordering
      *
-     * @return array
+     * @return DataProviderInterface
      * @throws MappingException
      */
-    public function get(array $conditions, array $orderings = []) : array;
+    public function get(array $conditions, array $orderings = []) : DataProviderInterface;
 
     /**
      * Get row of data filtered on $fieldName by $value
@@ -48,10 +48,10 @@ interface DataMapperInterface
      * @param mixed $value
      * @param array $orderings
      *
-     * @return array
+     * @return DataProviderInterface
      * @throws MappingException
      */
-    public function getBy(string $fieldName, $value, array $orderings = []) : array;
+    public function getBy(string $fieldName, $value, array $orderings = []) : DataProviderInterface;
 
     /**
      * Get limited rows filtered by conditions
@@ -60,7 +60,7 @@ interface DataMapperInterface
      * @param array $orderings
      * @param array $limits
      *
-     * @return array
+     * @return DataProviderInterface[]
      */
     public function getAll(array $conditions, array $orderings = [], array $limits = []) : array;
 

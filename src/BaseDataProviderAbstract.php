@@ -39,19 +39,16 @@ abstract class BaseDataProviderAbstract extends DataProviderAbstract
     /**
      * Initialize object with data
      *
-     * @param int $id
      * @param array $data
      *
      * @throws Exceptions\InvalidPropertyValueException
      * @throws Exceptions\PropertyAccessDeniedException
      * @throws PropertyNotFoundException
      */
-    public function init(int $id, array $data)
+    public function init(array $data)
     {
         static $init = true;
         if ($init) {
-
-            $this->id = (int) $id;
 
             foreach ($this->getDataFields() as $field => $label) {
                 if (array_key_exists($field, $data)) {
