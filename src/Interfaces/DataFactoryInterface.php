@@ -7,7 +7,7 @@ namespace Spirling\DataComponents\Interfaces;
  *
  * @package Spirling\DataComponents\Interfaces
  */
-interface FactoryInterface
+interface DataFactoryInterface
 {
 
     /**
