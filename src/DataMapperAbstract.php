@@ -70,7 +70,7 @@ abstract class DataMapperAbstract implements DataMapperInterface
         foreach ($data as $property => $value) {
             if (array_key_exists($property, $fields)) {
                 $field = $fields[$property];
-                $this->prepareDataItem($property, $value);
+                $this->prepareDataItem($field, $value);
                 $this->prepare($property, $value);
 
                 $result[$field] = $value;
@@ -79,9 +79,9 @@ abstract class DataMapperAbstract implements DataMapperInterface
         return $result;
     }
 
-    protected function prepareDataItem($property, $value)
+    protected function prepareDataItem($field, $value)
     {
-        $type = $this->getTableDataTypes()[$property];
+        $type = $this->getTableDataTypes()[$field];
         switch ($type) {
             case self::PARAM_INT:
                 $value = (int) $value;
