@@ -70,7 +70,7 @@ abstract class DataMapperAbstract implements DataMapperInterface
         foreach ($data as $property => $value) {
             if (array_key_exists($property, $fields)) {
                 $field = $fields[$property];
-                $this->prepareDataItem($field, $value);
+                $value = $this->prepareDataItem($field, $value);
                 $this->prepare($property, $value);
 
                 $result[$field] = $value;
