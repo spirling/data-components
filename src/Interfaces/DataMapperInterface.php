@@ -19,7 +19,7 @@ interface DataMapperInterface
      *
      * @throws MappingException
      */
-    public function save(DataProviderInterface $dataProvider) : void;
+    public function save(DataProviderInterface $dataProvider);
 
     /**
      * Remove data from data storage
@@ -28,7 +28,7 @@ interface DataMapperInterface
      *
      * @throws MappingException
      */
-    public function remove(DataProviderInterface $dataProvider) : void;
+    public function remove(DataProviderInterface $dataProvider);
 
     /**
      * Get row of data filtered by conditions (it will return only 1 row)

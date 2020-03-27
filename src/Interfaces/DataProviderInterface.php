@@ -41,7 +41,7 @@ interface DataProviderInterface
      * @throws PropertyAccessDeniedException
      * @throws PropertyNotFoundException
      */
-    public function set(string $name, $value) : void;
+    public function set(string $name, $value);
 
     /**
      * Check property isset
@@ -60,7 +60,7 @@ interface DataProviderInterface
      * @throws PropertyAccessDeniedException
      * @throws PropertyNotFoundException
      */
-    public function unset(string $name) : void;
+    public function unset(string $name);
 
     /**
      * @param string $name property name
@@ -78,7 +78,7 @@ interface DataProviderInterface
      *
      * @throws InvalidPropertyValueException
      */
-    public function validate(string $name, $value) : void;
+    public function validate(string $name, $value);
 
     /**
      * Get an array of properties current values in format
@@ -98,7 +98,7 @@ interface DataProviderInterface
      * @throws PropertyAccessDeniedException
      * @throws PropertyNotFoundException
      */
-    public function setData(array $data) : void;
+    public function setData(array $data);
 
     /**
      * Prepare array of data to correspond with array format
@@ -120,6 +120,6 @@ interface DataProviderInterface
      * @throws InvalidPropertyValueException
      * @throws PropertyNotFoundException
      */
-    public function validateData(array $data) : void;
+    public function validateData(array $data);
 
 }
