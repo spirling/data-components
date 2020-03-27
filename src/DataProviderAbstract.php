@@ -24,7 +24,7 @@ abstract class DataProviderAbstract implements DataProviderInterface
     /**
      * @inheritDoc
      */
-    public function set(string $name, $value) : void
+    public function set(string $name, $value)
     {
         $setter = 'set' . ucfirst($name);
         if (method_exists($this, $setter)) {
@@ -46,7 +46,7 @@ abstract class DataProviderAbstract implements DataProviderInterface
     /**
      * @inheritDoc
      */
-    public function unset(string $name) : void
+    public function unset(string $name)
     {
         if (property_exists($this, $name)) {
             unset($this->$name);
@@ -70,7 +70,7 @@ abstract class DataProviderAbstract implements DataProviderInterface
     /**
      * @inheritDoc
      */
-    public function validate(string $name, $value) : void
+    public function validate(string $name, $value)
     {
         $validator = 'validate' . ucfirst($name);
         if (method_exists($this, $validator)) {
@@ -93,11 +93,13 @@ abstract class DataProviderAbstract implements DataProviderInterface
     /**
      * @inheritDoc
      */
-    public function setData(array $data) : void
+    public function setData(array $data)
     {
-        foreach ($this->getDataFields() as $field => $value) {
-            $value = $this->prepare($field, $value);
-            $data[$field] = $this->set($field, $value);
+        foreach ($data as $field => $value) {
+            if (array_key_exists($field, $this->getDataFields())) {
+                $value = $this->prepare($field, $value);
+                $this->set($field, $value);
+            }
         }
     }
 
@@ -107,8 +109,10 @@ abstract class DataProviderAbstract implements DataProviderInterface
     public function prepareData(array $data) : array
     {
         $result = [];
-        foreach ($this->getDataFields() as $field => $value) {
-            $result[$field] = $this->prepare($field, $value);
+        foreach ($data as $field => $value) {
+            if (array_key_exists($field, $this->getDataFields())) {
+                $result[$field] = $this->prepare($field, $value);
+            }
         }
         return $result;
     }
@@ -116,7 +120,7 @@ abstract class DataProviderAbstract implements DataProviderInterface
     /**
      * @inheritDoc
      */
-    public function validateData(array $data) : void
+    public function validateData(array $data)
     {
         foreach ($data as $field => $value) {
             if (array_key_exists($field, $this->getDataFields())) {

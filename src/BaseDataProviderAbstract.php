@@ -26,9 +26,9 @@ abstract class BaseDataProviderAbstract extends DataProviderAbstract
     protected $id;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId() : int
+    public function getId()
     {
         return $this->id;
     }
@@ -57,6 +57,8 @@ abstract class BaseDataProviderAbstract extends DataProviderAbstract
             if (array_key_exists('id', $data)) {
                 $this->setId((int) $data['id']);
             }
+
+            $data = $this->prepareData($data);
 
             foreach ($this->getDataFields() as $field => $label) {
                 if (array_key_exists($field, $data)) {
